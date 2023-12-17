@@ -240,6 +240,8 @@ class TruthTable:
             lines.append("")
             lines.append("")
 
+        flag = self.evaluate(test_case)
+
         lines.extend(
             [
                 "truth_table = TruthTable.from_csv(",
@@ -247,7 +249,7 @@ class TruthTable:
                 ")",
                 "",
                 'if __name__ == "__main__":',
-                f"    assert truth_table.evaluate(case={test_case}) is True",
+                f"    assert truth_table.evaluate(case={test_case}) is {flag}",
             ]
         )
 
@@ -260,6 +262,7 @@ def generate_initial_csv(
     flag_name: str,
     path: Path,
     sep: str = "\t",
+    default_flag: str = "0",
     overwrite: bool = False,
 ):
     """
@@ -279,7 +282,7 @@ def generate_initial_csv(
     headers.append(flag_name)
     rows = list(itertools.product(*conditions.values()))
     rows = [[str(value) for value in row] for row in rows]
-    rows = [[*row, ""] for row in rows]
+    rows = [[*row, default_flag] for row in rows]
     with path.open("w", newline="") as f:
         writer = csv.writer(f, delimiter=sep)
         writer.writerow(headers)
