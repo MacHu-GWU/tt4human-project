@@ -6,8 +6,9 @@ omit =
     tt4human/tests/*
     tt4human/vendor/*
     tt4human/_version.py
-    tt4human/cli.py
     tt4human/paths.py
+    tt4human/compat.py
+    tt4human/better_enum.py
 
 [report]
 # Regexes for lines to exclude from consideration
