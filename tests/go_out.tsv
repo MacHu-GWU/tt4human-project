@@ -1,0 +1,7 @@
+weather	get_up	go_out
+is_sunny	before_10	1
+is_sunny	10_to_2	1
+is_sunny	after_2	0
+not_sunny	before_10	0
+not_sunny	10_to_2	0
+not_sunny	after_2	0
