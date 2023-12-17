@@ -15,6 +15,14 @@ x.y.z (Backlog)
 **Miscellaneous**
 
 
+0.2.1 (2023-12-17)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Features and Improvements**
+
+- Add the following api:
+    - ``tt4human.api.generate_initial_csv``
+
+
 0.1.1 (2023-12-17)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **Features and Improvements**
