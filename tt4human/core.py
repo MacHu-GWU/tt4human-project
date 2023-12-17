@@ -154,7 +154,7 @@ class TruthTable:
             because TSV can be copied into Excel / GoogleSheet easily.
         """
         rows = list()
-        with Path(path).open("r") as f:
+        with Path(path).open("r", newline="") as f:
             reader = csv.reader(f, delimiter=sep)
             headers = next(reader)
             for row in reader:
@@ -207,7 +207,7 @@ class TruthTable:
         _ensure_path_not_exists(path_csv, overwrite)
         _ensure_path_not_exists(path_py, overwrite)
 
-        with path_csv.open("w") as f:
+        with path_csv.open("w", newline="") as f:
             writer = csv.writer(f, delimiter="\t")
             writer.writerow(self.headers)
             for row in self.rows:
@@ -280,7 +280,7 @@ def generate_initial_csv(
     rows = list(itertools.product(*conditions.values()))
     rows = [[str(value) for value in row] for row in rows]
     rows = [[*row, ""] for row in rows]
-    with path.open("w") as f:
+    with path.open("w", newline="") as f:
         writer = csv.writer(f, delimiter=sep)
         writer.writerow(headers)
         for row in rows:
