@@ -66,7 +66,7 @@ Below is the truth table::
 
 **Feature 1, truth table evaluator**
 
-the ``truth_table`` Python library can read truth table data from csv/tsv file and evaluate the truth table by the given case.
+the ``tt4human`` Python library can read truth table data from csv/tsv file and evaluate the truth table by the given case.
 
 .. code-block:: python
 
