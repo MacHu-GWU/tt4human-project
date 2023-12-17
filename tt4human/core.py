@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import typing as T
-import dataclasses
 import csv
+import dataclasses
+import itertools
 from pathlib import Path
 
 from .vendor.strutils import under2camel, slugify
@@ -20,6 +21,7 @@ bool_mapper = {
     "n": False,
     "1": True,
     "0": False,
+    "": False,
 }
 
 
@@ -251,3 +253,35 @@ class TruthTable:
 
         module_content = "\n".join(lines)
         path_py.write_text(module_content)
+
+
+def generate_initial_csv(
+    conditions: T.Dict[str, T.List[str]],
+    flag_name: str,
+    path: Path,
+    sep: str = "\t",
+    overwrite: bool = False,
+):
+    """
+    Generate an initial CSV file from a dict of conditions. So human can copy
+    it into Excel or GoogleSheet and fill the truth table.
+
+    :param conditions: dict, key is the condition type, value is a list of
+        condition values.
+    :param flag_name: str, name of the flag column.
+    :param path: path-like object, path to the CSV file.
+    :param sep: str, separator of the CSV file, by default we use tab,
+        because TSV can be copied into Excel / GoogleSheet easily.
+    :param overwrite: bool, if True, overwrite the existing CSV file.
+    """
+    _ensure_path_not_exists(path, overwrite)
+    headers = list(conditions.keys())
+    headers.append(flag_name)
+    rows = list(itertools.product(*conditions.values()))
+    rows = [[str(value) for value in row] for row in rows]
+    rows = [[*row, ""] for row in rows]
+    with path.open("w") as f:
+        writer = csv.writer(f, delimiter=sep)
+        writer.writerow(headers)
+        for row in rows:
+            writer.writerow(row)

@@ -9,6 +9,7 @@ def test():
     _ = api.to_bool
     _ = api.InvalidCaseError
     _ = api.TruthTable
+    _ = api.generate_initial_csv
 
 
 if __name__ == "__main__":
