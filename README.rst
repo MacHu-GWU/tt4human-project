@@ -52,6 +52,8 @@ Welcome to ``tt4human`` Documentation
 ==============================================================================
 📔 See `Full Documentation HERE <https://tt4human.readthedocs.io/index.html>`_.
 
+.. image:: https://tt4human.readthedocs.io/en/latest/_static/tt4human-logo.png
+
 A `Truth Table <https://en.wikipedia.org/wiki/Truth_table>`_ is like a cheat sheet that helps us figure out if something is true or false based on certain **"conditions"**. We call a specific combination of conditions a **"case."** The outcome, whether it's true or false, is what we call the **"target."**
 
 Imagine you're trying to decide whether or not you should go out. Two things could affect your decision: the weather and what time you wake up. So, in this situation, the weather and your wake-up time are the "conditions". When you combine these conditions, like if it's sunny and you woke up early, that combination is a "case." And the big question of whether you should go out or not is your "target." The Truth Table helps us organize all these cases and their outcomes to make decisions easier.
