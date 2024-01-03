@@ -144,6 +144,26 @@ class TruthTable:
         return lookup
 
     @classmethod
+    def new(
+        cls,
+        headers: T.List[str],
+        rows: T.List[list],
+    ):
+        """
+        Create a new truth table.
+
+        :param headers: the last column is the "target", others are "conditions".
+        :param rows: list of "cases", for each row, the last item is the "target",
+            others are "conditions".
+        """
+        new_rows = list()
+        for row in rows:
+            new_row = list(row[:-1])
+            new_row.append(to_bool(str(row[-1])))
+            new_rows.append(new_row)
+        return cls(headers, new_rows)
+
+    @classmethod
     def from_csv(
         cls,
         path,
@@ -166,19 +186,17 @@ class TruthTable:
             reader = csv.reader(f, delimiter=sep)
             headers = next(reader)
             for row in reader:
-                row[-1] = to_bool(row[-1])
                 rows.append(row)
-
-        return cls(headers=headers, rows=rows)
+        return cls.new(headers=headers, rows=rows)
 
     @classmethod
     def from_pandas_df(cls, df: "pd.DataFrame"): # pragma: no cover
+        """
+        Create a truth table from a pandas DataFrame.
+        """
         headers = list(df.columns)
         rows = df.values.tolist()
-        for row in rows:
-            row[-1] = to_bool(str(row[-1]))
-
-        return cls(headers=headers, rows=rows)
+        return cls.new(headers=headers, rows=rows)
 
     def evaluate(self, case: T.Dict[str, str]) -> bool:
         """

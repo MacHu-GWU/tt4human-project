@@ -1,12 +1,12 @@
 
-.. .. image:: https://readthedocs.org/projects/tt4human/badge/?version=latest
+.. image:: https://readthedocs.org/projects/tt4human/badge/?version=latest
     :target: https://tt4human.readthedocs.io/en/latest/
     :alt: Documentation Status
 
 .. image:: https://github.com/MacHu-GWU/tt4human-project/workflows/CI/badge.svg
     :target: https://github.com/MacHu-GWU/tt4human-project/actions?query=workflow:CI
 
-.. .. image:: https://codecov.io/gh/MacHu-GWU/tt4human-project/branch/main/graph/badge.svg
+.. image:: https://codecov.io/gh/MacHu-GWU/tt4human-project/branch/main/graph/badge.svg
     :target: https://codecov.io/gh/MacHu-GWU/tt4human-project
 
 .. image:: https://img.shields.io/pypi/v/tt4human.svg
@@ -26,10 +26,10 @@
 
 ------
 
-.. .. image:: https://img.shields.io/badge/Link-Document-blue.svg
+.. image:: https://img.shields.io/badge/Link-Document-blue.svg
     :target: https://tt4human.readthedocs.io/en/latest/
 
-.. .. image:: https://img.shields.io/badge/Link-API-blue.svg
+.. image:: https://img.shields.io/badge/Link-API-blue.svg
     :target: https://tt4human.readthedocs.io/en/latest/py-modindex.html
 
 .. image:: https://img.shields.io/badge/Link-Install-blue.svg
