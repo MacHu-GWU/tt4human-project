@@ -10,6 +10,10 @@ from .vendor.strutils import under2camel, slugify
 from ._version import __version__
 from .compat import cached_property
 
+if T.TYPE_CHECKING:
+    import pandas as pd
+
+
 bool_mapper = {
     "true": True,
     "false": False,
@@ -62,13 +66,17 @@ class TruthTable:
 
     Below is the truth table::
 
-        weather	get_up	go_out
+        weather	    get_up	    go_out
         is_sunny	before_10	1
-        is_sunny	10_to_2	1
-        is_sunny	after_2	0
+        is_sunny	10_to_2	    1
+        is_sunny	after_2	    0
         not_sunny	before_10	0
-        not_sunny	10_to_2	0
-        not_sunny	after_2	0
+        not_sunny	10_to_2	    0
+        not_sunny	after_2	    0
+
+    :param headers: the last column is the "target", others are "conditions".
+    :param rows: list of "cases", for each row, the last item is the "target",
+        others are "conditions".
     """
 
     headers: T.List[str] = dataclasses.field()
@@ -160,6 +168,15 @@ class TruthTable:
             for row in reader:
                 row[-1] = to_bool(row[-1])
                 rows.append(row)
+
+        return cls(headers=headers, rows=rows)
+
+    @classmethod
+    def from_pandas_df(cls, df: "pd.DataFrame"): # pragma: no cover
+        headers = list(df.columns)
+        rows = df.values.tolist()
+        for row in rows:
+            row[-1] = to_bool(str(row[-1]))
 
         return cls(headers=headers, rows=rows)
 
