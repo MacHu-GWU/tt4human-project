@@ -58,13 +58,13 @@ Imagine you're trying to decide whether or not you should go out. Two things cou
 
 For example, we have two types of conditions: ``weather`` and ``get_up`` (when you get up). And we want to determine if you will go out. ``weather`` has two possible values: ``is_sunny`` and ``not_sunny``. ``get_up`` has three possible values: ``before_10``, ``10_to_2``, ``after_2``. Below is the truth table::
 
-    weather	    get_up	    go_out
-    is_sunny	before_10	1
-    is_sunny	10_to_2	    1
-    is_sunny	after_2	    0
-    not_sunny	before_10	0
-    not_sunny	10_to_2	    0
-    not_sunny	after_2	    0
+    weather     get_up      go_out
+    is_sunny    before_10   1
+    is_sunny    10_to_2     1
+    is_sunny    after_2     0
+    not_sunny   before_10   0
+    not_sunny   10_to_2     0
+    not_sunny   after_2     0
 
 ``tt4human`` provides some tools to work with Truth Table in Python.
 
